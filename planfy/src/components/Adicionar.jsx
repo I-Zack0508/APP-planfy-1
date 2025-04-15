@@ -1,53 +1,52 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Image } from 'expo-image'
+import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { Image } from 'expo-image';
 
 export default function Adicionar() {
     return (
         <View style={styles.container}>
-            <View style={styles.botoes}>
-                <a href="#">
-                    <Image
-                        style={styles.botao}
-                        source={require("../../assets/home.png")}
+            <TouchableOpacity onPress={() => console.log("Home")}>
+                <Image
+                    style={styles.botao}
+                    source={require("../../assets/home.png")}
                 />
-                </a>
-            </View>
+            </TouchableOpacity>
 
-            <View style={styles.botoes}>
-                <a href="#">
-                    <Image
-                        style={styles.botao}
-                        source={require("../../assets/botaoAdd.png")}
+            <TouchableOpacity onPress={() => console.log("Adicionar")}>
+                <Image
+                    style={styles.botao}
+                    source={require("../../assets/botaoAdd.png")}
                 />
-                </a>
-            </View>
+            </TouchableOpacity>
 
-            <View style={styles.botoes}>
-                <a href="#">
-                    <Image
-                        style={styles.botao}
-                        source={require("../../assets/calender.png")}
+            <TouchableOpacity onPress={() => console.log("Calendário")}>
+                <Image
+                    style={styles.botao}
+                    source={require("../../assets/calender.png")}
                 />
-                </a>
-            </View>
+            </TouchableOpacity>
         </View>
-    )
+    );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
         flexDirection: 'row',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        gap: 50,
-        backgroundColor: 'white',
-        position: 'fixed',
-        width: '100%',
-        padding: 5
+        backgroundColor: 'red',
+        paddingVertical: 10,
+        elevation: 10, // sombra Android
+        shadowColor: '#000', // sombra iOS
+        shadowOffset: { width: 0, height: -2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
     },
-
     botao: {
         width: 35,
-        height: 35
-    }, 
+        height: 35,
+    },
 });

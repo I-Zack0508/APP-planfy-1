@@ -1,30 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { Image } from 'expo-image'
+import { Image } from 'expo-image';
 import Header from './src/components/Header';
-import Semana from './src/components/Semana';
 import Adicionar from './src/components/Adicionar';
-import { ScrollView } from 'react-native-web';
+import TaskCreator from './src/components/CrieTask';
+import 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 
 export default function App() {
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Header />
-        <Semana />
-        <View style={styles.foto}>
-          <Image
-            style={styles.borda}
-            source={require("./assets/bordas3.png")}
-          />
-        </View>
-        <View style={styles.footer}>
-          <Adicionar />
-        </View>
+    <View style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <View style={styles.container}>
+          <Header />
 
-        <StatusBar style="auto" />
-      </View>
-    </ScrollView>
+          <View style={styles.bordaContainer}>
+            <Image
+              style={styles.borda2}
+              source={require("./assets/bordas2.png")} />
+          </View>
+
+          <View style={styles.task}>
+            <TaskCreator />
+          </View>
+        </View>
+      </ScrollView>
+
+      {/* Menu fixo */}
+      <Adicionar />
+      
+      <StatusBar style="auto" />
+    </View>
   );
 }
 
@@ -33,23 +39,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-
-  footer: {
-    width: "100%",
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'fixed',
-    paddingTop: 820,
-
+  bordaContainer: {
+    marginTop: -60,
+    paddingBottom: 0,
+    zIndex: -1,
   },
-
-  borda: {
-    marginLeft: '-20px',
-    width: 130,
-    height: 130
+  borda2: {
+    width: 180,
+    height: 180,
   },
-
-  foto: {
-    marginTop: 580
-  }
+  task: {
+    // Customize o estilo da task aqui
+  },
+  scrollContent: {
+    paddingBottom: 100, // Espaço para o menu fixo não cobrir conteúdo
+  },
 });
